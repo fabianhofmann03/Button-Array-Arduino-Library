@@ -33,10 +33,15 @@ class buttonArray {
         int row_num;
         int col_num;
 
+        int int_results_len;
+        uint8_t* results;
+
+        bool executor_exist = false;
         void (*press) (int);
     public:
         buttonArray(int col_num, int row_num, int* button_cols, int* button_rows);
         void setup();
+        uint8_t* getResultArray();
         void setExecuter(void (*new_press)(int));
         void update();
 };
