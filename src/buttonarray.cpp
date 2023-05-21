@@ -1,6 +1,6 @@
 #include <buttonarray.h>
 
-buttonArray::buttonArray(int col_num, int row_num, int *button_cols, int *button_rows)
+ButtonArray::ButtonArray(int col_num, int row_num, int *button_cols, int *button_rows)
 {
     this->col_num = col_num;
     this->row_num = row_num;
@@ -9,12 +9,13 @@ buttonArray::buttonArray(int col_num, int row_num, int *button_cols, int *button
 
     this->int_results_len = (col_num * row_num) / 8 + ((col_num * row_num) % 8 != 0);
     this->results = new uint8_t[this->int_results_len];
-    for(int x = 0; x < this->int_results_len; x++) {
+    for (int x = 0; x < this->int_results_len; x++)
+    {
         *(this->results + x) = 0;
-    } 
+    }
 }
 
-void buttonArray::setup()
+void ButtonArray::setup()
 {
     for (int x = 0; x < this->col_num; x++)
     {
@@ -27,21 +28,24 @@ void buttonArray::setup()
     }
 }
 
-uint8_t* buttonArray::getResultArray() {
+uint8_t *ButtonArray::getResultArray()
+{
     return this->results;
 }
 
-void buttonArray::setExecuter(void (*new_press)(int)) {
+void ButtonArray::setExecuter(void (*new_press)(int))
+{
     this->executor_exist = true;
     this->press = new_press;
 }
 
-void buttonArray::update()
+void ButtonArray::update()
 {
-    for(int x = 0; x < this->int_results_len; x++) {
+    for (int x = 0; x < this->int_results_len; x++)
+    {
         *(this->results + x) = 0;
     }
-    for (int x = 0; x < this->col_num; x++) 
+    for (int x = 0; x < this->col_num; x++)
     {
         pinMode(*(this->button_cols + x), OUTPUT);
         digitalWrite(*(this->button_cols + x), LOW);
@@ -51,7 +55,7 @@ void buttonArray::update()
 
             int position = x + y * this->col_num;
             *(this->results + (position / 8)) = *(this->results + (position / 8)) | (reading << (position % 8));
-            
+
             if (reading && this->executor_exist)
             {
                 this->press(position);

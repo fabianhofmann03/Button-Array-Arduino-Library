@@ -26,24 +26,26 @@ Rows are Inputs
 
 */
 
-class buttonArray {
-    private:
-        int* button_rows;
-        int* button_cols;
-        int row_num;
-        int col_num;
+class ButtonArray
+{
+private:
+    int *button_rows;
+    int *button_cols;
+    int row_num;
+    int col_num;
 
-        int int_results_len;
-        uint8_t* results;
+    int int_results_len;
+    uint8_t *results;
 
-        bool executor_exist = false;
-        void (*press) (int);
-    public:
-        buttonArray(int col_num, int row_num, int* button_cols, int* button_rows);
-        void setup();
-        uint8_t* getResultArray();
-        void setExecuter(void (*new_press)(int));
-        void update();
+    bool executor_exist = false;
+    void (*press)(int);
+
+public:
+    ButtonArray(int col_num, int row_num, int *button_cols, int *button_rows);
+    void setup();
+    uint8_t *getResultArray();
+    void setExecuter(void (*new_press)(int));
+    void update();
 };
 
 #endif
