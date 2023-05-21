@@ -1,0 +1,17 @@
+{
+    "name": "button array",
+    "version": "1.0.0",
+    "description": "Library for button arrays",
+    "keywords": "button, array",
+    "authors":
+    [
+      {
+        "name": "Fabian Hofmann",
+        "email": "fabi.hofmann@gmx.at"
+      }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+  }
+  
