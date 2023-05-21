@@ -10,6 +10,11 @@
         "email": "fabi.hofmann@gmx.at"
       }
     ],
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/fabianhofmann03/buttonArray.git"
+    },
     "license": "MIT",
     "frameworks": "*",
     "platforms": "*"
