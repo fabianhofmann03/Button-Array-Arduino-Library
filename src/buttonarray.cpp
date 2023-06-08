@@ -17,7 +17,7 @@ ButtonArray::ButtonArray(int col_num, int row_num, int *button_cols, int *button
 
 ButtonArray::~ButtonArray()
 {
-    delete results;
+    delete[] results;
 }
 
 void ButtonArray::setup()
