@@ -37,14 +37,15 @@ private:
     int int_results_len;
     uint8_t *results;
 
-    bool executor_exist = false;
-    void (*press)(int);
+    void (*press)(int) = NULL;
 
 public:
     ButtonArray(int col_num, int row_num, int *button_cols, int *button_rows);
+    ~ButtonArray();
     void setup();
     uint8_t *getResultArray();
     void setExecuter(void (*new_press)(int));
+    void removeExecutor();
     void update();
 };
 

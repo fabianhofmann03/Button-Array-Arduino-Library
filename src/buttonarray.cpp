@@ -15,6 +15,11 @@ ButtonArray::ButtonArray(int col_num, int row_num, int *button_cols, int *button
     }
 }
 
+ButtonArray::~ButtonArray()
+{
+    delete results;
+}
+
 void ButtonArray::setup()
 {
     for (int x = 0; x < this->col_num; x++)
@@ -35,8 +40,11 @@ uint8_t *ButtonArray::getResultArray()
 
 void ButtonArray::setExecuter(void (*new_press)(int))
 {
-    this->executor_exist = true;
     this->press = new_press;
+}
+
+void ButtonArray::removeExecutor() {
+    this->press = NULL;
 }
 
 void ButtonArray::update()
@@ -56,7 +64,7 @@ void ButtonArray::update()
             int position = x + y * this->col_num;
             *(this->results + (position / 8)) = *(this->results + (position / 8)) | (reading << (position % 8));
 
-            if (reading && this->executor_exist)
+            if (reading && this->press != NULL)
             {
                 this->press(position);
             }
